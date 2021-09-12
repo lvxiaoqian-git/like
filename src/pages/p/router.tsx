@@ -1,4 +1,4 @@
-import { Route, RouteProps } from "react-router-dom";
+import { Redirect, Route, RouteProps, Switch } from "react-router-dom";
 import { Home } from "./Home";
 import { Home1 } from "./Home1";
 
@@ -9,10 +9,11 @@ const routes: RouteProps[] = [
 
 export function PRouter() {
   return (
-    <>
+    <Switch>
       {routes.map((item, index) => (
         <Route {...item} path={`${item.path}`} key={index} />
       ))}
-    </>
+      <Redirect from="/" to="/home"></Redirect>
+    </Switch>
   );
 }

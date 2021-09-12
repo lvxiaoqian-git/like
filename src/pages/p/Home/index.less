@@ -1,4 +1,36 @@
 @blur: #3775d1;
+
+@H000: #ffffcc;
+@H001: #cc9933;
+@H002: #336666;
 .home {
-  background-color: @blur;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  &__study {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    clip-path: polygon(0 0, 100% 0, 100% 100%);
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%);
+    background-color: @H000;
+    &-move {
+      transform: translateX(100%);
+      transition: 1s;
+    }
+  }
+  &__live {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    clip-path: polygon(0 0, 100% 100%, 0 100%);
+    -webkit-clip-path: polygon(0 0, 100% 100%, 0 100%);
+    background-color: @H001;
+    &-move {
+      transform: translateX(-100%);
+      transition: 1s;
+    }
+  }
 }

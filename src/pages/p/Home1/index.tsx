@@ -1,7 +1,7 @@
-import React from "react";
 import { useHistory, useLocation } from "react-router";
 import { Link } from "react-router-dom";
 import { isMobile } from "../../../utils/isMobile";
+
 import "./index.less";
 export interface HomeProps {
   pathname?: string;
