@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Route, useHistory } from "react-router-dom";
+import { Route, useHistory, useLocation } from "react-router-dom";
 import "./index.less";
 export interface HomeProps {
   pathname?: string;
@@ -12,31 +12,21 @@ function Life() {
       dsadsada
       <p>dsa</p>
       <p>dsa</p>
-      <p>dsa</p>
-      <p>dsa</p>
-      <p>dsa</p>
-      <p>dsa</p>
-      <p>dsa</p>
-      <p>dsa</p>
-      <p>dsa</p>
-      <p>dsa</p>
     </div>
   );
 }
 
 export function Home(props: HomeProps) {
   const history = useHistory();
-  const { location } = props;
   const [move, setMove] = useState(false);
-
+  const { pathname } = useLocation();
   useEffect(() => {
-    console.log(location?.pathname);
-    if (location?.pathname === "/home") {
+    if (pathname === "/home") {
       // 本来要加路由监听，突然发现hooks中的effect hook可以结合props来监听路由
       // 那么home就可以直接作为页面的layout来使用啦
       setMove(false);
     }
-  }, [location?.pathname]);
+  }, [pathname]);
 
   return (
     <div className="home">
