@@ -8,11 +8,15 @@ export function setStorage(
   name: string,
   type: StorageEnum = StorageEnum.session
 ) {
-  window.localStorage.setItem(key, name);
+  type === StorageEnum.local
+    ? window.localStorage.setItem(key, name)
+    : window.sessionStorage.setItem(key, name);
 }
 export function getStorage(
   key: string,
   type: StorageEnum = StorageEnum.session
 ) {
-  return window.localStorage[key];
+  return type === StorageEnum.session
+    ? window.sessionStorage[key]
+    : window.localStorage[key];
 }

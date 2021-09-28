@@ -18,13 +18,16 @@ function Life() {
 
 export function Home(props: HomeProps) {
   const history = useHistory();
-  const [move, setMove] = useState(false);
+  const [move, setMove] = useState<boolean>(false);
   const { pathname } = useLocation();
   useEffect(() => {
+    // 刷新之后不会有动画
     if (pathname === "/home") {
       // 本来要加路由监听，突然发现hooks中的effect hook可以结合props来监听路由
       // 那么home就可以直接作为页面的layout来使用啦
       setMove(false);
+    } else {
+      setMove(true);
     }
   }, [pathname]);
 
@@ -39,7 +42,7 @@ export function Home(props: HomeProps) {
         }}
       ></div>
       <div
-        className={`home__live ${move ? "home__live-move" : ""}`}
+        className={`home__live ${move ? "home__live-move" : ""} `}
         onClick={() => {
           history.push("/home/life");
           setMove(true);
